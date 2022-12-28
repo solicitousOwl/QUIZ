@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_dashboard">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.quiz.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.example.quiz.ui.survey.SurveyFragment"
+        android:label="@string/title_survey"
+        tools:layout="@layout/fragment_survey" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_navigation_notifications"
+            app:destination="@id/navigation_notifications"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/navigation_dashboard"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_splashActivity"
+            app:destination="@id/splashActivity"
+            app:popUpTo="@id/splashActivity"
+            app:popUpToInclusive="true"/>
+
+        <argument
+            android:name="QUIZ_ANSWERS"
+            app:argType="string" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.example.quiz.ui.result.ResultFragment"
+        android:label="@string/title_results"
+        tools:layout="@layout/fragment_result" >
+
+        <action
+            android:id="@+id/action_navigation_notifications_to_navigation_dashboard"
+            app:destination="@id/navigation_dashboard"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/navigation_notifications"
+            app:popUpToInclusive="true"/>
+
+
+    </fragment>
+    <activity
+        android:id="@+id/splashActivity"
+        android:name="com.example.quiz.SplashActivity"
+        android:label="SplashActivity" />
+</navigation>
